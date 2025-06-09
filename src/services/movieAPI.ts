@@ -12,7 +12,6 @@ const instance = axios.create({
   headers: {
     Accept: "application/json",
     "Content-Type": "application/json",
-    Authorization: apiKey,
   },
 });
 
@@ -28,7 +27,7 @@ const get = async <T>(endpoint: string) => {
 //get all generes
 export const getGenres = async () => {
   const data = await get<{ genres: Genre[] }>(
-    `/genre/movie/list?api_key=${apiKey}&language=sv-SE`
+    `/genre/movie/list?api_key=${apiKey}&language=en-US&include_adult=false`
   );
   return data.genres;
 };

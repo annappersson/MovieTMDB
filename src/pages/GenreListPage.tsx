@@ -1,6 +1,7 @@
 import { Alert, ListGroup } from "react-bootstrap";
 import useGenres from "../hooks/useGenres";
 import { Link } from "react-router";
+import "../assets/GenreListPage.scss";
 
 export const GenreListPage = () => {
   const { data: genres, error, isError, isLoading } = useGenres();
@@ -8,7 +9,6 @@ export const GenreListPage = () => {
   return (
     <>
       <title>Film Genres</title>
-      <h1>Genres</h1>
 
       {isError && <Alert>{error.message}</Alert>}
 
