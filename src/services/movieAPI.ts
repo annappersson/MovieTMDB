@@ -12,6 +12,7 @@ const instance = axios.create({
   headers: {
     Accept: "application/json",
     "Content-Type": "application/json",
+    Authorization: apiKey,
   },
 });
 
@@ -20,15 +21,16 @@ const get = async <T>(endpoint: string) => {
 
   if (fakeDelay) {
     await new Promise((r) => setTimeout(r, fakeDelay));
-
-    return res.data;
   }
+  return res.data;
 };
 
 //get all generes
-
-export const getGenres = () => {
-  return get<Genre[]>(`/genre/movie/list?api_key=${apiKey}&language=sv-SE`);
+export const getGenres = async () => {
+  const data = await get<{ genres: Genre[] }>(
+    `/genre/movie/list?api_key=${apiKey}&language=sv-SE`
+  );
+  return data.genres;
 };
 
 //get All movies

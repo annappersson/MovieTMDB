@@ -4,6 +4,7 @@ import HomePage from "./pages/HomePage";
 import NotFoundPage from "./pages/NotFoundPage";
 import Navigation from "./components/Navigation";
 import "./assets/App.scss";
+import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 
 function App() {
   return (
@@ -16,6 +17,8 @@ function App() {
 
         <Route path="*" element={<NotFoundPage />} />
       </Routes>
+
+      <ReactQueryDevtools />
     </div>
   );
 }

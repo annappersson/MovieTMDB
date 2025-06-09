@@ -5,10 +5,6 @@ import { Link } from "react-router";
 export const GenreListPage = () => {
   const { data: genres, error, isError, isLoading } = useGenres();
 
-  console.log("Genres:", genres);
-  console.log("Error:", error);
-  console.log("Is loading:", isLoading);
-
   return (
     <>
       <title>Film Genres</title>
