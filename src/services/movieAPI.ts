@@ -1,5 +1,5 @@
 import axios from "axios";
-import type { Genre } from "./movieAPI.types";
+import type { FilmByGenre, Genre } from "./movieAPI.types";
 
 const base_URL = "https://api.themoviedb.org/3" || "http://localhost:3000";
 const apiKey = import.meta.env.VITE_TMDB_API_KEY;
@@ -12,6 +12,7 @@ const instance = axios.create({
   headers: {
     Accept: "application/json",
     "Content-Type": "application/json",
+    Authorization: `Bearer ${apiKey}`,
   },
 });
 
@@ -27,12 +28,18 @@ const get = async <T>(endpoint: string) => {
 //get all generes
 export const getGenres = async () => {
   const data = await get<{ genres: Genre[] }>(
-    `/genre/movie/list?api_key=${apiKey}&language=en-US&include_adult=false`
+    `/genre/movie/list?language=en-US&include_adult=false`
   );
   return data.genres;
 };
 
-//get All movies
+//get All movies by genere
+export const getFilmByGenre = async (genreId: number) => {
+  const data = await get<FilmByGenre>(
+    `/discover/movie?language=en-US&include_adult=false&sort_by=popularity.desc&with_genres=${genreId}`
+  );
+  return data.results;
+};
 
 //get one movie
 

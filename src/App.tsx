@@ -5,6 +5,7 @@ import NotFoundPage from "./pages/NotFoundPage";
 import Navigation from "./components/Navigation";
 import "./assets/App.scss";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
+import FilmsByGenre from "./pages/FilmsByGenre";
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/genres" element={<GenreListPage />} />
+        <Route path="/genre/:genreId" element={<FilmsByGenre />} />
 
         <Route path="*" element={<NotFoundPage />} />
       </Routes>

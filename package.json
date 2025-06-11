@@ -6,9 +6,11 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",
-    "lint": "eslint .",
-    "preview": "vite preview",
-    "server": "json-server --watch data/db.json --port 3000"
+    "check:0-lint": "eslint .",
+    "check:1-tsc": "tsc --noEmit",
+    "check:2-type-coverage": "type-coverage -p ./tsconfig.app.json --at-least 100",
+    "check": "run-s check:*",
+    "preview": "vite preview"
   },
   "dependencies": {
     "@tanstack/react-query": "^5.79.0",

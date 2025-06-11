@@ -1,7 +1,8 @@
-import { Alert, ListGroup } from "react-bootstrap";
+import { Alert, Col, Nav, Row } from "react-bootstrap";
 import useGenres from "../hooks/useGenres";
 import { Link } from "react-router";
 import "../assets/GenreListPage.scss";
+import LoadingSpinner from "../components/LoadingSpinner";
 
 export const GenreListPage = () => {
   const { data: genres, error, isError, isLoading } = useGenres();
@@ -12,23 +13,28 @@ export const GenreListPage = () => {
 
       {isError && <Alert>{error.message}</Alert>}
 
-      {isLoading && <p>Loading genres...</p>}
+      {isLoading && <LoadingSpinner />}
 
       {genres && genres.length > 0 && (
-        <>
-          <ListGroup className="Genrelist">
+        <div className="GenreListContainer">
+          <h1>Genres</h1>
+
+          <Row xs={2} sm={3} md={4} lg={6} className="g-3">
             {genres.map((genre) => (
-              <ListGroup.Item
-                action
-                as={Link}
-                key={genre.id}
-                to={`/genre/${genre.id}`}
-              >
-                <span className="genre-name">{genre.name}</span>
-              </ListGroup.Item>
+              <Col key={genre.id}>
+                <Nav.Link
+                  as={Link}
+                  to={`/genre/${genre.id}`}
+                  id="GenreBtn"
+                  className="btn w-100"
+                  title={genre.name}
+                >
+                  {genre.name}
+                </Nav.Link>
+              </Col>
             ))}
-          </ListGroup>
-        </>
+          </Row>
+        </div>
       )}
 
       {genres && genres.length === 0 && (

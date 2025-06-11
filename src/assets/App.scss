@@ -1,6 +1,18 @@
 @import "bootstrap/scss/bootstrap";
 
 
+// grön c8d69b
+// vanilla f6e6a5
+// blue 3971b8
+// ivory fbfcee
+// dark green 343b1b
+
 h1, h2, h3, h4, h5, h6 {
 	margin-bottom: 0.75em;
+}
+
+#root {
+    background-color: #fbfcee;
+    height: 100vh;
+    color: #0d1117;
 }
