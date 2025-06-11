@@ -1,4 +1,6 @@
+import { Col, Nav } from "react-bootstrap";
 import type { Genre } from "../services/movieAPI.types";
+import { Link } from "react-router";
 
 interface GenreListItemProps {
   genres: Genre;
@@ -6,9 +8,17 @@ interface GenreListItemProps {
 
 const GenreListItem: React.FC<GenreListItemProps> = ({ genres }) => {
   return (
-    <li className="list-group-item">
-      <span className="genre-title">{genres.name}</span>
-    </li>
+    <Col>
+      <Nav.Link
+        as={Link}
+        to={`/genre/${genres.id}`}
+        id="GenreBtn"
+        className="btn w-100"
+        title={genres.name}
+      >
+        {genres.name}
+      </Nav.Link>
+    </Col>
   );
 };
 
