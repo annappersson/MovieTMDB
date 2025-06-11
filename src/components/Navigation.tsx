@@ -8,7 +8,7 @@ const Navigation = () => {
     <Navbar bg="dark" variant="dark" expand="md">
       <Container>
         <Navbar.Brand as={Link} to="/">
-          🎬TMDB Movie site
+          🎬TMDB Movie Site
         </Navbar.Brand>
 
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
