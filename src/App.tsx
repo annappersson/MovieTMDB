@@ -7,11 +7,14 @@ import "./assets/App.scss";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import FilmsByGenrePage from "./pages/FilmsByGenrePage";
 import FilmDetailPage from "./pages/FilmDetailPage";
+import GlobalLoadingSpinner from "./components/spinners/GlobalLoadingSpinner";
 
 function App() {
   return (
     <div id="app">
       <Navigation />
+
+      <GlobalLoadingSpinner />
 
       <Routes>
         <Route path="/" element={<HomePage />} />

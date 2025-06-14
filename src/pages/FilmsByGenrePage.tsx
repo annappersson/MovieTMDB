@@ -1,33 +1,29 @@
 import { Link, useParams } from "react-router";
 import useFilmByGenres from "../hooks/useFilmByGenre";
 import useGenres from "../hooks/useGenres";
-import LoadingSpinner from "../components/LoadingSpinner";
 import { Alert, Col, Row } from "react-bootstrap";
 
 const FilmsByGenre = () => {
   const { genreId } = useParams<{ genreId: string }>();
-  const {
-    data: films,
-    error,
-    isError,
-    isLoading,
-  } = useFilmByGenres(Number(genreId));
-  const { data: genres } = useGenres();
+  const { data: films, error, isError } = useFilmByGenres(Number(genreId));
+  const { data } = useGenres();
 
-  const genre = genres?.find((g) => g.id.toString() === genreId);
+  if (!data) {
+    return;
+  }
+
+  const genre = data.genres?.find((g) => g.id.toString() === genreId);
   const genreName = genre ? genre.name : "Unknown Genre";
 
   return (
     <>
       {isError && <Alert>{error.message}</Alert>}
 
-      {isLoading && <LoadingSpinner />}
-
-      {!isLoading && films && films?.length > 0 && (
+      {films && films?.results.length > 0 && (
         <div className="GenreListContainer">
           <h2>{genreName}</h2>
           <Row>
-            {films?.map((film) => (
+            {films?.results.map((film) => (
               <Col
                 key={film.id}
                 sm={10}

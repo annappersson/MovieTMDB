@@ -3,6 +3,10 @@ export interface Genre {
   name: string;
 }
 
+export interface GenreResponse {
+  genres: Genre[];
+}
+
 //films by genre
 export interface FilmByGenre {
   page: number;
@@ -13,17 +17,38 @@ export interface FilmByGenre {
 
 //film details
 export interface FilmDetail {
-  adult: boolean;
+  adult: false;
   backdrop_path: string;
   budget: number;
-  genres: Genre[];
+  genres: GenreResponse[];
   id: number;
   original_title: string;
   overview: string;
   poster_path: string;
   release_date: string;
   vote_average: number;
+  runtime: number;
   title: string;
+}
+
+interface NowPlaying {
+  adult: false;
+  backdrop_path: string;
+  genre_ids: number[];
+  id: number;
+  original_language: string;
+  orginal_title: string;
+  overview: string;
+  popularity: number;
+  poster_path: string;
+  release_date: string;
+  title: string;
+  vote_average: number;
+  vote_count: number;
+}
+
+export interface NowPlayingResponse {
+  results: NowPlaying[];
 }
 
 // used by tex /movie/now_playing, /movie/top_rated m.m
