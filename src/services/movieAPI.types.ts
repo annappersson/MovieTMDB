@@ -17,11 +17,11 @@ export interface FilmByGenre {
 
 //film details
 export interface FilmDetail {
+  id: number;
   adult: false;
   backdrop_path: string;
   budget: number;
   genres: GenreResponse[];
-  id: number;
   original_title: string;
   overview: string;
   poster_path: string;

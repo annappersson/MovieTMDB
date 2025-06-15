@@ -1,6 +1,8 @@
 import axios from "axios";
 import type {
   FilmByGenre,
+  FilmDetail,
+  FilmListResponse,
   GenreResponse,
   NowPlayingResponse,
 } from "./movieAPI.types";
@@ -37,7 +39,6 @@ export const getGenres = () => {
 //get All movies by genere
 export const getFilmByGenre = (genreId: number) => {
   return get<FilmByGenre>(`/discover/movie?${genreId}`);
-  //   return data.results;
 };
 
 export const getNowPlayingFilms = () => {
@@ -45,6 +46,9 @@ export const getNowPlayingFilms = () => {
 };
 
 //get one movie
+export const getFilmById = (FilmId: number) => {
+  return get<FilmDetail>(`/movie/${FilmId}`);
+};
 
 //get all people
 
