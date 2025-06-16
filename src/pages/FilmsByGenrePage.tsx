@@ -2,6 +2,7 @@ import { Link, useParams } from "react-router";
 import useFilmByGenres from "../hooks/useFilmByGenre";
 import useGenres from "../hooks/useGenres";
 import { Alert, Col, Row } from "react-bootstrap";
+import FilmListCard from "../components/FilmListCard";
 
 const FilmsByGenre = () => {
   const { genreId } = useParams<{ genreId: string }>();
@@ -24,18 +25,7 @@ const FilmsByGenre = () => {
           <h2>{genreName}</h2>
           <Row>
             {films?.results.map((film) => (
-              <Col
-                key={film.id}
-                sm={10}
-                md={4}
-                lg={2}
-                action
-                as={Link}
-                to={`/movie/${film.id}`}
-                className="mb-4"
-              >
-                <span>{film.title}</span>
-              </Col>
+              <FilmListCard key={film.id} film={film} />
             ))}
           </Row>
         </div>
