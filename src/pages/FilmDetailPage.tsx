@@ -1,6 +1,6 @@
 import { useParams } from "react-router";
 import useFilm from "../hooks/useFilm";
-import { Alert, Card, ListGroup } from "react-bootstrap";
+import { Alert } from "react-bootstrap";
 import FilmDetailCard from "../components/FilmDetailCard";
 
 const FilmDetailPage = () => {

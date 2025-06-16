@@ -37,8 +37,10 @@ export const getGenres = () => {
 };
 
 //get All movies by genere
-export const getFilmByGenre = (genreId: number) => {
-  return get<FilmByGenre>(`/discover/movie?${genreId}`);
+export const getFilmByGenre = (genreId: number, page = 1) => {
+  return get<FilmByGenre>(
+    `/discover/movie?with_genres=${genreId}&page=${page}`
+  );
 };
 
 export const getNowPlayingFilms = () => {

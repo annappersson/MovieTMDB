@@ -1,44 +1,44 @@
-import { Alert, Col, Nav, Row } from "react-bootstrap";
-import useGenres from "../hooks/useGenres";
-import { Link } from "react-router";
-import "../assets/GenreListPage.scss";
+// import { Alert, Col, Nav, Row } from "react-bootstrap";
+// import useGenres from "../hooks/useGenres";
+// import { Link } from "react-router";
+// import "../assets/GenreListPage.scss";
 
-export const GenreListPage = () => {
-  const { data, error, isError } = useGenres();
+// export const GenreListPage = () => {
+//   const { data, error, isError } = useGenres();
 
-  return (
-    <>
-      <title>Film Genres</title>
+//   return (
+//     <>
+//       <title>Film Genres</title>
 
-      {isError && <Alert>{error.message}</Alert>}
+//       {isError && <Alert>{error.message}</Alert>}
 
-      {data && data.genres.length > 0 && (
-        <div className="GenreListContainer">
-          <h1>Genres</h1>
+//       {data && data.genres.length > 0 && (
+//         <div className="GenreListContainer">
+//           <h1>Genres</h1>
 
-          <Row xs={2} sm={3} md={4} lg={6} className="g-3">
-            {data.genres.map((genre) => (
-              <Col key={genre.id}>
-                <Nav.Link
-                  as={Link}
-                  to={`/genre/${genre.id}`}
-                  id="GenreBtn"
-                  className="btn w-100"
-                  title={genre.name}
-                >
-                  {genre.name}
-                </Nav.Link>
-              </Col>
-            ))}
-          </Row>
-        </div>
-      )}
+//           <Row xs={2} sm={3} md={4} lg={6} className="g-3">
+//             {data.genres.map((genre) => (
+//               <Col key={genre.id}>
+//                 <Nav.Link
+//                   as={Link}
+//                   to={`/genre/${genre.id}`}
+//                   id="GenreBtn"
+//                   className="btn w-100"
+//                   title={genre.name}
+//                 >
+//                   {genre.name}
+//                 </Nav.Link>
+//               </Col>
+//             ))}
+//           </Row>
+//         </div>
+//       )}
 
-      {data && data.genres.length === 0 && (
-        <Alert variant="warning">no genres? 🥺</Alert>
-      )}
-    </>
-  );
-};
+//       {data && data.genres.length === 0 && (
+//         <Alert variant="warning">no genres? 🥺</Alert>
+//       )}
+//     </>
+//   );
+// };
 
-export default GenreListPage;
+// export default GenreListPage;

@@ -1,12 +1,19 @@
-import { Link, useParams } from "react-router";
+import { useParams } from "react-router";
 import useFilmByGenres from "../hooks/useFilmByGenre";
 import useGenres from "../hooks/useGenres";
-import { Alert, Col, Row } from "react-bootstrap";
+import { Alert } from "react-bootstrap";
 import FilmListCard from "../components/FilmListCard";
+import Pagination from "../components/Pagination";
+import { useState } from "react";
 
 const FilmsByGenre = () => {
+  const [page, setPage] = useState(1);
   const { genreId } = useParams<{ genreId: string }>();
-  const { data: films, error, isError } = useFilmByGenres(Number(genreId));
+  const {
+    data: films,
+    error,
+    isError,
+  } = useFilmByGenres(Number(genreId), page);
   const { data } = useGenres();
 
   if (!data) {
@@ -21,14 +28,25 @@ const FilmsByGenre = () => {
       {isError && <Alert>{error.message}</Alert>}
 
       {films && films?.results.length > 0 && (
-        <div className="GenreListContainer">
+        <>
           <h2>{genreName}</h2>
-          <Row>
+          <div className="GenreListContainer">
             {films?.results.map((film) => (
               <FilmListCard key={film.id} film={film} />
             ))}
-          </Row>
-        </div>
+
+            <div id="buttons">
+              <Pagination
+                page={films.page}
+                totalPages={films.total_pages}
+                hasPreviousPage={page > 1}
+                hasNextPage={page < films.total_pages}
+                onPreviousPage={() => setPage((p) => p - 1)}
+                onNextPage={() => setPage((p) => p + 1)}
+              />
+            </div>
+          </div>
+        </>
       )}
     </>
   );

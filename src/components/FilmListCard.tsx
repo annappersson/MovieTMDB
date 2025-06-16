@@ -1,6 +1,7 @@
 import { Card, ListGroup, Nav } from "react-bootstrap";
 import type { FilmDetail } from "../services/movieAPI.types";
 import { NavLink } from "react-router";
+import "../assets/FilmListPage.scss";
 
 interface FilmDetailProps {
   film: FilmDetail;
@@ -18,7 +19,7 @@ const FilmListCard: React.FC<FilmDetailProps> = ({ film }) => {
         </div>
         <Card.Title>{film.original_title}</Card.Title>
         <ListGroup variant="flush" className="mb-3">
-          <ListGroup.Item>Runtime: {film.runtime}</ListGroup.Item>
+          <ListGroup.Item>Release date: {film.release_date}</ListGroup.Item>
           <ListGroup.Item>
             Average voting:{" "}
             {film?.vote_average ? (film.vote_average * 10).toFixed(0) : ""}%
