@@ -8,6 +8,7 @@ import FilmsByGenrePage from "./pages/FilmsByGenrePage";
 import FilmDetailPage from "./pages/FilmDetailPage";
 import GlobalLoadingSpinner from "./components/spinners/GlobalLoadingSpinner";
 import ActorDetailPage from "./pages/ActorDetailPage";
+import PopularActorPage from "./pages/PopularActorPage";
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
         <Route path="/genre/:genreId" element={<FilmsByGenrePage />} />
         <Route path="/movie/:movieId" element={<FilmDetailPage />} />
         <Route path="/actors/:actorId" element={<ActorDetailPage />} />
+        <Route path="/person/popular" element={<PopularActorPage />} />
 
         <Route path="*" element={<NotFoundPage />} />
       </Routes>

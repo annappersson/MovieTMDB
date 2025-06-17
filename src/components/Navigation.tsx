@@ -14,12 +14,11 @@ const Navigation: React.FC = () => {
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="ms-auto">
-            <Nav.Link as={Link} to="/actors">
-              Actors
-            </Nav.Link>
-            <Nav.Link as={Link} to="/movies">
-              Movies
-            </Nav.Link>
+            <NavDropdown title="Actors" id="actors-nav-dropdown">
+              <NavDropdown.Item as={Link} to="/person/popular">
+                Popular Actors
+              </NavDropdown.Item>
+            </NavDropdown>
 
             <NavDropdown title="Genres" id="basic-nav-dropdown">
               {isLoading && (
