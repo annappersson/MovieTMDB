@@ -29,6 +29,10 @@ export interface FilmDetail {
   vote_average: number;
   runtime: number;
   title: string;
+  credits: {
+    cast: ActorDetails[];
+    crew: CrewMember[];
+  };
 }
 
 interface NowPlaying {
@@ -51,7 +55,6 @@ export interface NowPlayingResponse {
   results: NowPlaying[];
 }
 
-// used by tex /movie/now_playing, /movie/top_rated m.m
 export interface FilmListResponse {
   page: number;
   results: FilmDetail[];
@@ -84,11 +87,14 @@ export interface ActorDetails {
   place_of_birth: string;
   profile_path: string; //this is Img path
   known_for_department: string;
+  known_for: KnownFor[];
 }
 
-//films one actor is in
-export interface ActorMovieCredits {
-  cast: FilmDetail[];
-  crew: CrewMember[];
+export interface KnownFor {
   id: number;
+  original_title: string;
+  name: string;
+  media_type: string;
+  overview: string;
+  poster_path: string | null;
 }

@@ -1,8 +1,8 @@
 import axios from "axios";
 import type {
+  ActorDetails,
   FilmByGenre,
   FilmDetail,
-  FilmListResponse,
   GenreResponse,
   NowPlayingResponse,
 } from "./movieAPI.types";
@@ -49,9 +49,10 @@ export const getNowPlayingFilms = () => {
 
 //get one movie
 export const getFilmById = (FilmId: number) => {
-  return get<FilmDetail>(`/movie/${FilmId}`);
+  return get<FilmDetail>(`/movie/${FilmId}?append_to_response=credits`);
 };
 
-//get all people
-
 //get one person
+export const getActor = (personId: number, page = 1) => {
+  return get<ActorDetails[]>(`/person/${personId}&page=${page}`);
+};
