@@ -1,10 +1,11 @@
 import axios from "axios";
 import type {
   ActorDetails,
-  FilmByGenre,
   FilmDetail,
   GenreResponse,
   NowPlayingResponse,
+  PaginatedResponse,
+  PopularActor,
 } from "./movieAPI.types";
 
 const base_URL = "https://api.themoviedb.org/3" || "http://localhost:3000";
@@ -38,7 +39,7 @@ export const getGenres = () => {
 
 //get All movies by genere
 export const getFilmByGenre = (genreId: number, page = 1) => {
-  return get<FilmByGenre>(
+  return get<PaginatedResponse<FilmDetail>>(
     `/discover/movie?with_genres=${genreId}&page=${page}`
   );
 };
@@ -61,4 +62,8 @@ export const getActor = (personId: number) => {
 
 export const getActorById = (actorId: number) => {
   return get<ActorDetails>(`/person/${actorId}`);
+};
+
+export const getPopularActors = (page: number = 1) => {
+  return get<PaginatedResponse<PopularActor>>(`/person/popular?page=${page}`);
 };

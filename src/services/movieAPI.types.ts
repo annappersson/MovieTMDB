@@ -7,15 +7,6 @@ export interface GenreResponse {
   genres: Genre[];
 }
 
-//films by genre
-export interface FilmByGenre {
-  page: number;
-  results: FilmDetail[];
-  total_pages: number;
-  total_results: number;
-}
-
-//film details
 export interface FilmDetail {
   id: number;
   adult: false;
@@ -55,13 +46,6 @@ export interface NowPlayingResponse {
   results: NowPlaying[];
 }
 
-export interface FilmListResponse {
-  page: number;
-  results: FilmDetail[];
-  total_pages: number;
-  total_results: number;
-}
-
 //the Films actors
 export interface CreditsResponse {
   id: number;
@@ -78,7 +62,6 @@ export interface CrewMember {
   profile_path: string; //this is Img path
 }
 
-//actor detail
 export interface ActorDetails {
   id: number;
   name: string;
@@ -104,4 +87,19 @@ export interface KnownFor {
   media_type: string;
   overview: string;
   poster_path: string | null;
+}
+
+export interface PopularActor {
+  id: number;
+  name: string;
+  profile_path: string | null;
+  known_for: KnownFor[];
+  popularity: number;
+}
+
+export interface PaginatedResponse<T> {
+  page: number;
+  results: T[];
+  total_pages: number;
+  total_results: number;
 }
