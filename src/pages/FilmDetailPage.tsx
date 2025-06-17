@@ -4,7 +4,6 @@ import { Alert } from "react-bootstrap";
 import FilmDetailCard from "../components/FilmDetailCard";
 
 const FilmDetailPage = () => {
-  console.log("FilmDetailPage mounted");
   const { movieId } = useParams<{ movieId: string }>();
   const { data, error, isError, isLoading } = useFilm(Number(movieId));
 

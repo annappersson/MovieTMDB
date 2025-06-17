@@ -1,7 +1,26 @@
-import React from "react";
+import { useParams } from "react-router";
+import { Alert } from "react-bootstrap";
+import useActor from "../hooks/useActor";
+import ActorDetailCard from "../components/ActorDetailCard";
 
 const ActorDetailPage = () => {
-  return <div>ActorDetailPage</div>;
+  const { actorId } = useParams<{ actorId: string }>();
+  const { data, error, isError, isLoading } = useActor(Number(actorId));
+
+  if (isError) return <Alert variant="danger">{error.message}</Alert>;
+
+  if (!data && !isLoading)
+    return <Alert variant="warning">No data found 😢</Alert>;
+
+  return (
+    <>
+      {data && (
+        <div className="FilmDetail-Container">
+          <ActorDetailCard key={data.id} actor={data} />
+        </div>
+      )}
+    </>
+  );
 };
 
 export default ActorDetailPage;

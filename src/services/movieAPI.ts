@@ -53,6 +53,12 @@ export const getFilmById = (FilmId: number) => {
 };
 
 //get one person
-export const getActor = (personId: number, page = 1) => {
-  return get<ActorDetails[]>(`/person/${personId}&page=${page}`);
+export const getActor = (personId: number) => {
+  return get<ActorDetails[]>(
+    `/person/${personId}?append_to_response=combined_credits`
+  );
+};
+
+export const getActorById = (actorId: number) => {
+  return get<ActorDetails>(`/person/${actorId}`);
 };

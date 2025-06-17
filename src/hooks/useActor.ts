@@ -1,10 +1,10 @@
 import { useQuery } from "@tanstack/react-query";
 import * as filmAPI from "../services/movieAPI";
 
-const useActor = (actorId: number, page: number = 1) => {
+const useActor = (actorId: number) => {
   return useQuery({
-    queryKey: ["Actor", actorId, page],
-    queryFn: () => filmAPI.getActor(actorId, page),
+    queryKey: ["Actor", actorId],
+    queryFn: () => filmAPI.getActorById(actorId),
     enabled: !!actorId,
   });
 };

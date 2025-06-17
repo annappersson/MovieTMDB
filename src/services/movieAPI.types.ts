@@ -84,10 +84,17 @@ export interface ActorDetails {
   name: string;
   biography: string;
   birthday: string;
+  deathday: string;
+  popularity: number;
   place_of_birth: string;
   profile_path: string; //this is Img path
   known_for_department: string;
-  known_for: KnownFor[];
+  combined_credits?: CombinedCredits;
+}
+
+export interface CombinedCredits {
+  cast: KnownFor[];
+  crew: CrewMember[];
 }
 
 export interface KnownFor {
