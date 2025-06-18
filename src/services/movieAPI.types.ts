@@ -26,7 +26,7 @@ export interface FilmDetail {
   };
 }
 
-interface NowPlaying {
+export interface NowPlaying {
   adult: false;
   backdrop_path: string;
   genre_ids: number[];
@@ -44,6 +44,18 @@ interface NowPlaying {
 
 export interface NowPlayingResponse {
   results: NowPlaying[];
+}
+
+export interface PopularFilm {
+  id: number;
+  poster_path: string;
+  original_title: string;
+  popularity: string;
+  release_date: string;
+}
+
+export interface PopularFilmResponse {
+  results: PopularFilm[];
 }
 
 //the Films actors

@@ -1,0 +1,15 @@
+@import "bootstrap/scss/bootstrap";
+@import "./App.scss";
+
+.now-scroll-container {
+    display: flex;
+    overflow-x: auto;
+    gap: 1rem;
+    padding: 1rem 0;
+    scroll-behavior: smooth;
+}
+  
+.now-film-card {
+    flex: 0 0;
+    width: 250px;
+}

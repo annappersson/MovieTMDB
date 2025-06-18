@@ -6,6 +6,7 @@ import type {
   NowPlayingResponse,
   PaginatedResponse,
   PopularActor,
+  PopularFilmResponse,
 } from "./movieAPI.types";
 
 const base_URL = "https://api.themoviedb.org/3" || "http://localhost:3000";
@@ -46,6 +47,10 @@ export const getFilmByGenre = (genreId: number, page = 1) => {
 
 export const getNowPlayingFilms = () => {
   return get<NowPlayingResponse>(`/movie/now_playing`);
+};
+
+export const getPopularFilm = () => {
+  return get<PopularFilmResponse>(`/movie/popular`);
 };
 
 //get one movie
