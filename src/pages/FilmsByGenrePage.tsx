@@ -34,17 +34,16 @@ const FilmsByGenre = () => {
             {films?.results.map((film) => (
               <FilmListCard key={film.id} film={film} />
             ))}
-
-            <div id="buttons">
-              <Pagination
-                page={films.page}
-                totalPages={films.total_pages}
-                hasPreviousPage={page > 1}
-                hasNextPage={page < films.total_pages}
-                onPreviousPage={() => setPage((p) => p - 1)}
-                onNextPage={() => setPage((p) => p + 1)}
-              />
-            </div>
+          </div>
+          <div id="buttons">
+            <Pagination
+              page={films.page}
+              totalPages={films.total_pages}
+              hasPreviousPage={page > 1}
+              hasNextPage={page < films.total_pages}
+              onPreviousPage={() => setPage((p) => p - 1)}
+              onNextPage={() => setPage((p) => p + 1)}
+            />
           </div>
         </>
       )}

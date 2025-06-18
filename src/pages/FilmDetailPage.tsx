@@ -2,6 +2,7 @@ import { useParams } from "react-router";
 import useFilm from "../hooks/useFilm";
 import { Alert } from "react-bootstrap";
 import FilmDetailCard from "../components/FilmDetailCard";
+import "../assets/FilmDetailCard.scss";
 
 const FilmDetailPage = () => {
   const { movieId } = useParams<{ movieId: string }>();
@@ -15,7 +16,7 @@ const FilmDetailPage = () => {
   return (
     <>
       {data && (
-        <div className="FilmDetail-Container">
+        <div className="Film-Container">
           <FilmDetailCard key={data.id} film={data} />
         </div>
       )}

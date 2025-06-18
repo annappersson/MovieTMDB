@@ -1,5 +1,6 @@
 import React from "react";
 import { Button } from "react-bootstrap";
+import "../assets/Pagination.scss";
 
 interface PaginationProps {
   page: number;
@@ -24,7 +25,7 @@ const Pagination: React.FC<PaginationProps> = ({
         <Button
           disabled={!hasPreviousPage}
           onClick={onPreviousPage}
-          variant="outline-warning"
+          variant="outline-danger"
         >
           Previous Page
         </Button>
@@ -39,7 +40,7 @@ const Pagination: React.FC<PaginationProps> = ({
         <Button
           disabled={!hasNextPage}
           onClick={onNextPage}
-          variant="outline-warning"
+          variant="outline-danger"
         >
           Next Page
         </Button>

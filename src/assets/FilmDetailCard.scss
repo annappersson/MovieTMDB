@@ -1,0 +1,71 @@
+@import "bootstrap/scss/bootstrap";
+@import "./App.scss";
+
+.FilmDetail-Container {
+    max-width: 1000px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+  
+  .film-detail-card {
+    margin: auto;
+    width: 100%;
+    max-width: 900px;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    border-radius: 1rem;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    padding: 1rem;
+  }
+  
+  .film-top-section {
+   
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .film-poster-wrapper {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 1rem;
+  }
+  
+  .film-poster {
+    width: 200px;
+    height: auto;
+    border-radius: 0.5rem;
+  }
+  
+  .film-info {
+    width: 100%;
+  }
+  
+  .film-actors {
+    width: 100%;
+  }
+  
+  /* Desktop layout */
+  @media (min-width: 768px) {
+    .film-top-section {
+      flex-direction: row;
+      align-items: flex-start;
+      gap: 2rem;
+    }
+  
+    .film-poster-wrapper {
+      flex-shrink: 0;
+    }
+  
+    .film-poster {
+      width: 250px;
+    }
+  
+    .film-info {
+      flex-grow: 1;
+    }
+  }
+  
