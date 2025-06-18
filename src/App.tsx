@@ -9,13 +9,20 @@ import FilmDetailPage from "./pages/FilmDetailPage";
 import GlobalLoadingSpinner from "./components/spinners/GlobalLoadingSpinner";
 import ActorDetailPage from "./pages/ActorDetailPage";
 import PopularActorPage from "./pages/PopularActorPage";
+import { useIsFetching, useIsMutating } from "@tanstack/react-query";
 
 function App() {
+  const isFetching = useIsFetching();
+  const isMutating = useIsMutating();
+  const loading = isFetching + isMutating > 0;
+
+  if (loading) {
+    return <GlobalLoadingSpinner />;
+  }
+
   return (
     <div id="app">
       <Navigation />
-
-      <GlobalLoadingSpinner />
 
       <Routes>
         <Route path="/" element={<HomePage />} />

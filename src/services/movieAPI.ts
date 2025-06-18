@@ -7,6 +7,7 @@ import type {
   PaginatedResponse,
   PopularActor,
   PopularFilmResponse,
+  TopRatedFilmResponse,
 } from "./movieAPI.types";
 
 const base_URL = "https://api.themoviedb.org/3" || "http://localhost:3000";
@@ -41,16 +42,20 @@ export const getGenres = () => {
 //get All movies by genere
 export const getFilmByGenre = (genreId: number, page = 1) => {
   return get<PaginatedResponse<FilmDetail>>(
-    `/discover/movie?with_genres=${genreId}&page=${page}`
+    `/discover/movie?include_adult=false&with_genres=${genreId}&page=${page}`
   );
 };
 
 export const getNowPlayingFilms = () => {
-  return get<NowPlayingResponse>(`/movie/now_playing`);
+  return get<NowPlayingResponse>(`/movie/now_playing?include_adult=false`);
 };
 
 export const getPopularFilm = () => {
-  return get<PopularFilmResponse>(`/movie/popular`);
+  return get<PopularFilmResponse>(`/movie/popular?include_adult=false`);
+};
+
+export const getTopRatedFilm = () => {
+  return get<TopRatedFilmResponse>(`/movie/top_rated?include_adult=false`);
 };
 
 //get one movie

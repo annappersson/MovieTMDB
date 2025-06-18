@@ -28,7 +28,9 @@
 }
 
   #now-film-card .card {
-    min-height: 400px; 
+    min-height: 400px;
+    max-height: 400px; 
+    height: 100%;
     display: flex;
     flex-direction: column;
     text-decoration: none;
@@ -51,4 +53,10 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+}
+
+.card-body {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
 }

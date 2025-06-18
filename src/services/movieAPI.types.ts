@@ -58,6 +58,18 @@ export interface PopularFilmResponse {
   results: PopularFilm[];
 }
 
+export interface TopRatedFilm {
+  id: number;
+  poster_path: string;
+  original_title: string;
+  popularity: string;
+  release_date: string;
+}
+
+export interface TopRatedFilmResponse {
+  results: TopRatedFilm[];
+}
+
 //the Films actors
 export interface CreditsResponse {
   id: number;

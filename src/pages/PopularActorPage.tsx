@@ -2,9 +2,9 @@ import { Alert } from "react-bootstrap";
 import { useState } from "react";
 import usePopularActors from "../hooks/usePopularActor";
 import PopularActorList from "../components/PopularActorList";
+import Pagination from "../components/Pagination";
 
 const PopularActorPage = () => {
-  console.log("🔍 PopularActorPage is rendered");
   const [page, setPage] = useState(1);
   const { data: Actor, error, isError } = usePopularActors(page);
   console.log("Popular actors data:", Actor);
@@ -19,16 +19,16 @@ const PopularActorPage = () => {
               <PopularActorList key={actors.id} actor={actors} />
             ))}
 
-            {/* <div id="buttons">
+            <div id="buttons">
               <Pagination
-                page={films.page}
-                totalPages={films.total_pages}
+                page={Actor.page}
+                totalPages={Actor.total_pages}
                 hasPreviousPage={page > 1}
-                hasNextPage={page < films.total_pages}
+                hasNextPage={page < Actor.total_pages}
                 onPreviousPage={() => setPage((p) => p - 1)}
                 onNextPage={() => setPage((p) => p + 1)}
               />
-            </div> */}
+            </div>
           </div>
         </>
       )}

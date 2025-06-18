@@ -31,9 +31,11 @@ const FilmsByGenre = () => {
         <>
           <h2>{genreName}</h2>
           <div className="GenreListContainer">
-            {films?.results.map((film) => (
-              <FilmListCard key={film.id} film={film} />
-            ))}
+            {films?.results
+              .filter((film) => !film.adult)
+              .map((film) => (
+                <FilmListCard key={film.id} film={film} />
+              ))}
           </div>
           <div id="buttons">
             <Pagination
