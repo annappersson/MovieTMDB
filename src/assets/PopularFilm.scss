@@ -2,14 +2,53 @@
 @import "./App.scss";
 
 .now-scroll-container {
+    width: 100%;
     display: flex;
     overflow-x: auto;
     gap: 1rem;
     padding: 1rem 0;
     scroll-behavior: smooth;
+    scrollbar-width: thin;
+  scrollbar-color: #888 transparent;
+}
+
+.now-scroll-container::-webkit-scrollbar {
+    height: 8px;
 }
   
-.now-film-card {
-    flex: 0 0;
-    width: 250px;
+  .now-scroll-container::-webkit-scrollbar-thumb {
+    background-color: #888;
+    border-radius: 4px;
+}
+  
+#now-film-card {
+    flex: 0 0 auto;
+    width: 180px;
+
+}
+
+  #now-film-card .card {
+    min-height: 400px; 
+    display: flex;
+    flex-direction: column;
+    text-decoration: none;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+}
+
+  #now-film-card .card:hover {
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+  #now-film-card .card-img-top {
+    height: 270px;
+    object-fit: cover;
+}
+
+  #now-film-card .card-body {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
