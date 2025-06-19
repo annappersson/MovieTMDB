@@ -10,7 +10,7 @@ import type {
   TopRatedFilmResponse,
 } from "./movieAPI.types";
 
-const base_URL = "https://api.themoviedb.org/3" || "http://localhost:3000";
+const base_URL = "https://api.themoviedb.org/3";
 const apiKey = import.meta.env.VITE_TMDB_API_KEY;
 
 const fakeDelay = 1500;

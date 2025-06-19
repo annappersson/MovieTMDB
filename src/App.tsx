@@ -17,12 +17,11 @@ function App() {
   const isFetching = useIsFetching();
   const isMutating = useIsMutating();
   const loading = isFetching + isMutating > 0;
+  const { isDarkMode } = useTheme();
 
   if (loading) {
     return <GlobalLoadingSpinner />;
   }
-
-  const { isDarkMode } = useTheme();
 
   const appCssClasses = clsx("app", {
     "dark-mode": !isDarkMode,
