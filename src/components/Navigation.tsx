@@ -1,12 +1,17 @@
-import { Container, Nav, Navbar, NavDropdown } from "react-bootstrap";
+import { Button, Container, Nav, Navbar, NavDropdown } from "react-bootstrap";
 import { Link } from "react-router";
 import useGenres from "../hooks/useGenres";
+import useTheme from "../hooks/useTheme";
 
 const Navigation: React.FC = () => {
+  const { isDarkMode, toggleTheme } = useTheme();
   const { data: genres, isLoading, isError } = useGenres();
 
   return (
-    <Navbar expand="lg" className="bg-body-tertiary">
+    <Navbar
+      expand="lg"
+      className={!isDarkMode ? "bg-dark navbar-dark" : "bg-light navbar-light"}
+    >
       <Container>
         <Navbar.Brand as={Link} to="/">
           🎬 TMDB Movie Site
@@ -42,6 +47,9 @@ const Navigation: React.FC = () => {
               ))}
             </NavDropdown>
           </Nav>
+          <Button onClick={toggleTheme} variant="outline-secondary">
+            {isDarkMode ? "☀️" : "🌙"}
+          </Button>
         </Navbar.Collapse>
       </Container>
     </Navbar>

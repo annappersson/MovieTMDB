@@ -10,6 +10,8 @@ import GlobalLoadingSpinner from "./components/spinners/GlobalLoadingSpinner";
 import ActorDetailPage from "./pages/ActorDetailPage";
 import PopularActorPage from "./pages/PopularActorPage";
 import { useIsFetching, useIsMutating } from "@tanstack/react-query";
+import useTheme from "./hooks/useTheme";
+import clsx from "clsx";
 
 function App() {
   const isFetching = useIsFetching();
@@ -20,8 +22,14 @@ function App() {
     return <GlobalLoadingSpinner />;
   }
 
+  const { isDarkMode } = useTheme();
+
+  const appCssClasses = clsx("app", {
+    "dark-mode": !isDarkMode,
+  });
+
   return (
-    <div id="app">
+    <div id="app" className={appCssClasses}>
       <Navigation />
 
       <Routes>

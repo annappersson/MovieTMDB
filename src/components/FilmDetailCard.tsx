@@ -51,7 +51,7 @@ const FilmDetailCard: React.FC<FilmDetailProps> = ({ film }) => {
                     action
                     as={Link}
                     key={actor.id}
-                    to={`/actors/${actor.id}`}
+                    to={`/person/${actor.id}`}
                   >
                     <span className="film-title">{actor.name}</span>
                   </ListGroup.Item>
