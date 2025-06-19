@@ -1,71 +1,91 @@
 @import "bootstrap/scss/bootstrap";
 @import "./App.scss";
 
-.FilmDetail-Container {
-    max-width: 1000px;
-    width: 100%;
+.Film-Container{
     display: flex;
     justify-content: center;
-  }
-  
-  .film-detail-card {
-    margin: auto;
-    width: 100%;
-    max-width: 900px;
-    display: flex;
-    flex-direction: column;
-    gap: 2rem;
-    border-radius: 1rem;
-    overflow: hidden;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    padding-top: 3rem;
+    flex-wrap: wrap;
+}
+
+.film-detail-card {
+    width: 80vw;
+    background-color: rgba(255, 255, 255, 0.95);
+    border: none;
     padding: 1rem;
-  }
-  
+
+
   .film-top-section {
-   
     display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-  
-  .film-poster-wrapper {
-    display: flex;
-    justify-content: center;
-    margin-bottom: 1rem;
-  }
-  
-  .film-poster {
-    width: 200px;
-    height: auto;
-    border-radius: 0.5rem;
-  }
-  
-  .film-info {
-    width: 100%;
-  }
-  
-  .film-actors {
-    width: 100%;
-  }
-  
-  /* Desktop layout */
-  @media (min-width: 768px) {
-    .film-top-section {
-      flex-direction: row;
-      align-items: flex-start;
-      gap: 2rem;
-    }
-  
+    flex-wrap: wrap;
+
     .film-poster-wrapper {
-      flex-shrink: 0;
+      flex: 1 1 300px;
+      max-width: 300px;
+      margin-right: 2rem;
+
+      .film-poster {
+        width: 100%;
+        border-radius: 10px;
+      }
     }
-  
-    .film-poster {
-      width: 250px;
-    }
-  
+
     .film-info {
-      flex-grow: 1;
+      flex: 2 1 400px;
     }
   }
-  
+
+  .actor-in-movie-list {
+    margin-top: 2rem;
+
+    h4 {
+      margin-bottom: 1rem;
+    }
+
+    .horizontal-scroll {
+      display: flex;
+      gap: 1rem;
+      overflow-x: auto;
+      padding-bottom: 1rem;
+      scroll-behavior: smooth;
+
+      &::-webkit-scrollbar {
+        height: 8px;
+      }
+
+      &::-webkit-scrollbar-thumb {
+        background-color: #888;
+        border-radius: 4px;
+      }
+
+      .actor-card {
+        flex: 0 0 auto;
+        width: 140px;
+        text-align: center;
+
+        img {
+          width: 100%;
+          border-radius: 8px;
+          transition: transform 0.2s ease-in-out;
+          height: 210px;
+          object-fit: cover;
+        }
+
+        img:hover {
+          transform: scale(1.05);
+        }
+
+        .actor-title {
+          margin-top: 0.5rem;
+          font-size: 0.9rem;
+          color: inherit;
+          text-decoration: none;
+        }
+
+        a {
+          text-decoration: none;
+        }
+      }
+    }
+  }
+}

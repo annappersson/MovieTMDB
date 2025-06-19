@@ -48,27 +48,29 @@ const FilmDetailCard: React.FC<FilmDetailProps> = ({ film }) => {
           </div>
         </div>
 
-        <div className="film-actors">
-          <Card.Body>
-            <Card.Title className="actor-title">Actors in movie:</Card.Title>
-            {film.credits?.cast && film.credits.cast.length > 0 ? (
-              <ListGroup>
-                {film.credits.cast.map((actor) => (
-                  <ListGroup.Item
-                    className="listButton"
-                    action
-                    as={Link}
-                    key={actor.id}
-                    to={`/person/${actor.id}`}
-                  >
-                    <span className="film-title">{actor.name}</span>
-                  </ListGroup.Item>
-                ))}
-              </ListGroup>
-            ) : (
-              <p>No actors found for this film.</p>
-            )}
-          </Card.Body>
+        <div className="actor-in-movie-list mt-4">
+          <h4>Actors in movie:</h4>
+          {film.credits?.cast && film.credits.cast.length > 0 ? (
+            <div className="horizontal-scroll">
+              {film.credits.cast.map((actor) => (
+                <div key={actor.id} className="actor-card">
+                  <Link to={`/person/${actor.id}`}>
+                    <img
+                      src={
+                        actor.profile_path
+                          ? `https://image.tmdb.org/t/p/w200${actor.profile_path}`
+                          : NotFoundImage
+                      }
+                      alt={actor.name}
+                    />
+                    <p className="actor-title">{actor.name || "Untitled"}</p>
+                  </Link>
+                </div>
+              ))}
+            </div>
+          ) : (
+            <p>No actors found for this movie</p>
+          )}
         </div>
       </Card>
     </>

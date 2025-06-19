@@ -1,10 +1,19 @@
 @import "bootstrap/scss/bootstrap";
 @import "./App.scss";
 
+.ActorDetail-Container{
+  display: flex;
+  justify-content: center;
+  padding-top: 3rem;
+  flex-wrap: wrap;
+}
+
 .actor-detail-card {
+    width: 80vw;
     background-color: rgba(255, 255, 255, 0.95);
     border: none;
     padding: 1rem;
+  
   
     .actor-detail-content {
       display: flex;
