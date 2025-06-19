@@ -1,6 +1,7 @@
 import React from "react";
 import { Button } from "react-bootstrap";
 import "../assets/Pagination.scss";
+import useTheme from "../hooks/useTheme";
 
 interface PaginationProps {
   page: number;
@@ -19,8 +20,12 @@ const Pagination: React.FC<PaginationProps> = ({
   onNextPage,
   onPreviousPage,
 }) => {
+  const { isDarkMode } = useTheme();
   return (
-    <div className="PaginationContainer">
+    <div
+      id="PaginationContainer"
+      className={!isDarkMode ? "bg-dark navbar-dark" : "bg-light navbar-light"}
+    >
       <div className="prev">
         <Button
           disabled={!hasPreviousPage}
@@ -31,7 +36,7 @@ const Pagination: React.FC<PaginationProps> = ({
         </Button>
       </div>
 
-      <div className="page">
+      <div className={`page ${!isDarkMode ? "text-white" : "text-dark"}`}>
         Page {page}
         {totalPages && "/" + totalPages}
       </div>

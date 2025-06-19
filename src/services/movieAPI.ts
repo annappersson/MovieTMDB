@@ -69,8 +69,6 @@ export const getActorById = (actorId: number) => {
   );
 };
 
-export const getPopularActors = (page: number = 1) => {
-  return get<PaginatedResponse<PopularActor>>(
-    `/person/popular?page=${page}/movie_credits`
-  );
+export const getPopularActors = (page = 1) => {
+  return get<PaginatedResponse<PopularActor>>(`/person/popular?page=${page}`);
 };

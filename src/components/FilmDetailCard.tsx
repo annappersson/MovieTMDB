@@ -1,6 +1,7 @@
 import { Card, ListGroup } from "react-bootstrap";
 import type { FilmDetail } from "../services/movieAPI.types";
 import { Link } from "react-router";
+import NotFoundImage from "../assets/img/No-Image.png";
 
 interface FilmDetailProps {
   film: FilmDetail;
@@ -14,14 +15,21 @@ const FilmDetailCard: React.FC<FilmDetailProps> = ({ film }) => {
           <div className="film-poster-wrapper">
             <Card.Img
               variant="top"
-              src={`https://image.tmdb.org/t/p/w300${film.poster_path}`}
+              src={
+                film.poster_path
+                  ? `https://image.tmdb.org/t/p/w200${film.poster_path}`
+                  : NotFoundImage
+              }
+              alt={film.title}
               className="film-poster"
             />
           </div>
 
           <div className="film-info">
             <Card.Body>
-              <Card.Title>{film.original_title}</Card.Title>
+              <Card.Title>
+                {film.original_title || film.title || film.name || "Untitled"}
+              </Card.Title>
               <Card.Text>{film.overview}</Card.Text>
               <Card.Subtitle className="mb-2 text-muted">About</Card.Subtitle>
             </Card.Body>

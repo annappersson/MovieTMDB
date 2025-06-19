@@ -43,9 +43,22 @@ h1, h2, h3, h4, h5, h6 {
 #app.dark-mode {
     background-image: url("./img/spotlight_brown_hor.jpg");
     background-repeat: no-repeat;
-    background-size: contain; // Byt från cover till contain
+    background-size: contain; 
     background-position: center center;
-    background-attachment: fixed; // Så bakgrunden stannar när man scrollar
-    background-color: #000; // Fyller ut runt bilden
+    background-attachment: fixed; 
+    background-color: #000; 
     color: #f5f5f5;
-  }
+}
+
+.movie-card img {
+width: 130px;        
+height: 195px;        
+object-fit: cover;    
+border-radius: 8px;
+box-shadow: 0 0 6px rgba(0, 0, 0, 0.2);
+}
+
+.movie-card a {
+text-decoration: none; 
+color: inherit;        
+}

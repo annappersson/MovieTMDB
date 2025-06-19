@@ -1,10 +1,11 @@
 import { Card, ListGroup } from "react-bootstrap";
-import type { TopRatedFilm } from "../services/movieAPI.types";
+import type { FilmDetail } from "../services/movieAPI.types";
 import "../assets/PopularFilm.scss";
 import { Link } from "react-router";
+import NotFoundImage from "../assets/img/No-Image.png";
 
 interface TopRatedFilmProps {
-  films: TopRatedFilm[];
+  films: FilmDetail[];
 }
 
 const TopRatedFilmList: React.FC<TopRatedFilmProps> = ({ films }) => {
@@ -20,13 +21,17 @@ const TopRatedFilmList: React.FC<TopRatedFilmProps> = ({ films }) => {
             <Card>
               <Card.Img
                 variant="top"
-                src={`https://image.tmdb.org/t/p/w300${film.poster_path}`}
+                src={
+                  film.poster_path
+                    ? `https://image.tmdb.org/t/p/w200${film.poster_path}`
+                    : NotFoundImage
+                }
                 alt="{film_original_title} poster"
               />
 
               <Card.Body>
                 <Card.Title style={{ fontSize: "0.9rem" }}>
-                  {film.original_title}
+                  {film.original_title || film.title || film.name || "Untitled"}
                 </Card.Title>
                 <ListGroup.Item className="text-muted">
                   Release Date: {film.release_date}

@@ -1,13 +1,19 @@
 import { Alert } from "react-bootstrap";
-import { useState } from "react";
 import usePopularActors from "../hooks/usePopularActor";
 import PopularActorList from "../components/PopularActorList";
 import Pagination from "../components/Pagination";
+import { useSearchParams } from "react-router";
 
 const PopularActorPage = () => {
-  const [page, setPage] = useState(1);
+  const [searchParams, setSearchParams] = useSearchParams();
+  const page = Number(searchParams.get("page") || "1");
   const { data: Actor, error, isError } = usePopularActors(page);
 
+  const handlePageChange = (newPage: number) => {
+    setSearchParams({ page: newPage.toString() });
+  };
+
+  console.log("PopularActorPage render, page:", page);
   return (
     <>
       {isError && <Alert>{error.message}</Alert>}
@@ -18,17 +24,16 @@ const PopularActorPage = () => {
             {Actor?.results.map((actors) => (
               <PopularActorList key={actors.id} actor={actors} />
             ))}
-
-            <div id="buttons">
-              <Pagination
-                page={Actor.page}
-                totalPages={Actor.total_pages}
-                hasPreviousPage={page > 1}
-                hasNextPage={page < Actor.total_pages}
-                onPreviousPage={() => setPage((p) => p - 1)}
-                onNextPage={() => setPage((p) => p + 1)}
-              />
-            </div>
+          </div>
+          <div id="buttons">
+            <Pagination
+              page={page}
+              totalPages={Actor.total_pages}
+              hasPreviousPage={page > 1}
+              hasNextPage={page < Actor.total_pages}
+              onPreviousPage={() => handlePageChange(page - 1)}
+              onNextPage={() => handlePageChange(page + 1)}
+            />
           </div>
         </>
       )}

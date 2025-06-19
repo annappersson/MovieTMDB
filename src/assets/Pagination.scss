@@ -1,12 +1,12 @@
 @import "bootstrap/scss/bootstrap";
 @import "./App.scss";
 
-.PaginationContainer{
+#PaginationContainer{
     bottom: 0;
     padding: 2rem;
     width: 100%;
     display: flex;
     justify-content: center;
     gap: 1rem;
-    color: white;
 }
+

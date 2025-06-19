@@ -9,64 +9,68 @@ export interface GenreResponse {
 
 export interface FilmDetail {
   id: number;
+  name: string;
   adult: false;
   backdrop_path: string;
   budget: number;
   genres: GenreResponse[];
+  genre_ids: number[];
   original_title: string;
   overview: string;
   poster_path: string;
   release_date: string;
   vote_average: number;
+  vote_count: number;
   runtime: number;
   title: string;
+  popularity: string;
   credits: {
     cast: ActorDetails[];
   };
 }
 
-export interface NowPlaying {
-  adult: false;
-  backdrop_path: string;
-  genre_ids: number[];
-  id: number;
-  original_language: string;
-  orginal_title: string;
-  overview: string;
-  popularity: number;
-  poster_path: string;
-  release_date: string;
-  title: string;
-  vote_average: number;
-  vote_count: number;
-}
+// export interface NowPlaying {
+//   adult: false;
+//   backdrop_path: string;
+//   genre_ids: number[];
+//   id: number;
+//   original_language: string;
+//   orginal_title: string;
+//   overview: string;
+//   popularity: number;
+//   poster_path: string;
+//   release_date: string;
+//   title: string;
+//   vote_average: number;
+//   vote_count: number;
+// }
 
 export interface NowPlayingResponse {
-  results: NowPlaying[];
+  results: FilmDetail[];
 }
 
-export interface PopularFilm {
-  id: number;
-  poster_path: string;
-  original_title: string;
-  popularity: string;
-  release_date: string;
-}
+// export interface PopularFilm {
+//   id: number;
+//   poster_path: string;
+//   original_title: string;
+//   popularity: string;
+//   release_date: string;
+// }
 
 export interface PopularFilmResponse {
-  results: PopularFilm[];
+  results: FilmDetail[];
 }
 
-export interface TopRatedFilm {
-  id: number;
-  poster_path: string;
-  original_title: string;
-  popularity: string;
-  release_date: string;
-}
+// export interface TopRatedFilm {
+//   id: number;
+//   poster_path: string;
+//   original_title: string;
+//   popularity: string;
+//   release_date: string;
+// }
 
 export interface TopRatedFilmResponse {
-  results: TopRatedFilm[];
+  results: FilmDetail[];
 }
 
 //the Films actors
