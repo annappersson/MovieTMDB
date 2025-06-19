@@ -35,14 +35,35 @@ const FilmDetailCard: React.FC<FilmDetailProps> = ({ film }) => {
             </Card.Body>
 
             <ListGroup className="list-group-flush">
+              <ListGroup.Item>
+                Genres:
+                {film.genres.map((genre) => (
+                  <Link
+                    to={`/genre/${genre.id}`}
+                    key={genre.id}
+                    className="genre-link"
+                  >
+                    <span>
+                      {" "}
+                      {genre.name}
+                      {", "}
+                    </span>
+                  </Link>
+                ))}
+              </ListGroup.Item>
+              <ListGroup.Item>Status: {film.status}</ListGroup.Item>
               <ListGroup.Item>Release Date: {film.release_date}</ListGroup.Item>
               <ListGroup.Item>Runtime: {film.runtime} min</ListGroup.Item>
               <ListGroup.Item>
                 Budget: ${film.budget.toLocaleString()}
               </ListGroup.Item>
               <ListGroup.Item>
-                Average voting:{" "}
+                Rating:{" "}
                 {film?.vote_average ? (film.vote_average * 10).toFixed(0) : ""}%
+              </ListGroup.Item>
+              <ListGroup.Item>
+                tagline:
+                <span className="font-monospace"> {film.tagline}</span>
               </ListGroup.Item>
             </ListGroup>
           </div>
