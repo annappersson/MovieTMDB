@@ -22,7 +22,6 @@ export interface FilmDetail {
   title: string;
   credits: {
     cast: ActorDetails[];
-    crew: CrewMember[];
   };
 }
 
@@ -96,28 +95,16 @@ export interface ActorDetails {
   place_of_birth: string;
   profile_path: string; //this is Img path
   known_for_department: string;
-  combined_credits?: CombinedCredits;
-}
-
-export interface CombinedCredits {
-  cast: KnownFor[];
-  crew: CrewMember[];
-}
-
-export interface KnownFor {
-  id: number;
-  original_title: string;
-  name: string;
-  media_type: string;
-  overview: string;
-  poster_path: string | null;
+  combined_credits: {
+    cast: FilmDetail[];
+  };
 }
 
 export interface PopularActor {
   id: number;
   name: string;
   profile_path: string | null;
-  known_for: KnownFor[];
+  known_for: FilmDetail[];
   popularity: number;
 }
 

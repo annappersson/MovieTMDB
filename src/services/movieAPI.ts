@@ -63,17 +63,14 @@ export const getFilmById = (FilmId: number) => {
   return get<FilmDetail>(`/movie/${FilmId}?append_to_response=credits`);
 };
 
-//get one person
-export const getActor = (personId: number) => {
-  return get<ActorDetails[]>(
-    `/person/${personId}?append_to_response=combined_credits`
+export const getActorById = (actorId: number) => {
+  return get<ActorDetails>(
+    `/person/${actorId}?append_to_response=combined_credits`
   );
 };
 
-export const getActorById = (actorId: number) => {
-  return get<ActorDetails>(`/person/${actorId}`);
-};
-
 export const getPopularActors = (page: number = 1) => {
-  return get<PaginatedResponse<PopularActor>>(`/person/popular?page=${page}`);
+  return get<PaginatedResponse<PopularActor>>(
+    `/person/popular?page=${page}/movie_credits`
+  );
 };

@@ -15,7 +15,7 @@ const ActorDetailPage = () => {
   return (
     <>
       {data && (
-        <div className="FilmDetail-Container">
+        <div className="ActorDetail-Container">
           <ActorDetailCard key={data.id} actor={data} />
         </div>
       )}

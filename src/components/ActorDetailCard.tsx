@@ -37,24 +37,27 @@ const ActorDetailCard: React.FC<ActorProps> = ({ actor }) => {
 
         <div className="mt-3">
           <Card.Title className="movie-title">Known for:</Card.Title>
-          {actor.combined_credits?.cast?.length ? (
+
+          {actor?.combined_credits?.cast?.length > 0 ? (
             <ListGroup>
-              {actor.combined_credits.cast.slice(0, 10).map((film) => (
-                <ListGroup.Item
-                  className="listButton"
-                  action
-                  as={Link}
-                  key={film.id}
-                  to={`/films/${film.id}`}
-                >
-                  <span className="film-title">
-                    {film.original_title || film.name}
-                  </span>
-                </ListGroup.Item>
-              ))}
+              {actor.combined_credits.cast
+                // .filter((m) => m.media_type === "movie")
+                .map((movie) => (
+                  <ListGroup.Item
+                    className="listButton"
+                    action
+                    as={Link}
+                    key={movie.id}
+                    to={`/movie/${movie.id}`}
+                  >
+                    <span className="film-title">
+                      {movie.original_title || movie.title}
+                    </span>
+                  </ListGroup.Item>
+                ))}
             </ListGroup>
           ) : (
-            <p>No known films found for this actor.</p>
+            <p>No known films found for this actor</p>
           )}
         </div>
       </Card.Body>

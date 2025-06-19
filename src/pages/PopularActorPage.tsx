@@ -7,7 +7,7 @@ import Pagination from "../components/Pagination";
 const PopularActorPage = () => {
   const [page, setPage] = useState(1);
   const { data: Actor, error, isError } = usePopularActors(page);
-  console.log("Popular actors data:", Actor);
+
   return (
     <>
       {isError && <Alert>{error.message}</Alert>}

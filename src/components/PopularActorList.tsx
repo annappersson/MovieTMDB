@@ -1,5 +1,6 @@
-import { Card, ListGroup } from "react-bootstrap";
+import { Card, ListGroup, Nav } from "react-bootstrap";
 import type { PopularActor } from "../services/movieAPI.types";
+import { NavLink } from "react-router";
 
 interface ActorProps {
   actor: PopularActor;
@@ -21,7 +22,7 @@ const PopularActorList: React.FC<ActorProps> = ({ actor }) => {
             Known for:{" "}
             {actor.known_for.map((item, index) => (
               <span key={item.id || index}>
-                {item.original_title || item.name}
+                {item.original_title || item.title}
                 {index < actor.known_for.length - 1 ? ", " : ""}
               </span>
             ))}
@@ -31,6 +32,18 @@ const PopularActorList: React.FC<ActorProps> = ({ actor }) => {
             {actor?.popularity ? (actor.popularity * 10).toFixed(0) : ""}%
           </ListGroup.Item>
         </ListGroup>
+        <div className="mt-auto">
+          <Nav.Link
+            id="ActorListBtn"
+            as={NavLink}
+            key={actor.id}
+            to={`/person/${actor.id}`}
+            className="btn btn-secondary w-100"
+            role="button"
+          >
+            Read more
+          </Nav.Link>
+        </div>
       </Card.Body>
     </Card>
   );
