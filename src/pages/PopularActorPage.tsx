@@ -16,6 +16,7 @@ const PopularActorPage = () => {
   console.log("PopularActorPage render, page:", page);
   return (
     <>
+      <title>Popular Actors</title>
       {isError && <Alert>{error.message}</Alert>}
 
       {Actor && Actor?.results.length > 0 && (

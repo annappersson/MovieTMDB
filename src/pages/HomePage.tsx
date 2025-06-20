@@ -17,24 +17,27 @@ const HomePage = () => {
   if (!topRatedData && !isLoading) return <p>No films found.</p>;
 
   return (
-    <div className="homeContainer">
-      <div className="Popular-container">
-        {" "}
-        <h2>Popular Movies</h2>
-        {popularData && <PopularFilmList films={popularData.results} />}
-      </div>
+    <>
+      <title>HomePage</title>
+      <div className="homeContainer">
+        <div className="Popular-container">
+          {" "}
+          <h2>Popular Movies</h2>
+          {popularData && <PopularFilmList films={popularData.results} />}
+        </div>
 
-      <div className="NowPlaying-Container">
-        {" "}
-        <h2>Now playing Movies</h2>
-        {nowPlayingData && <NowPlayingList films={nowPlayingData.results} />}
+        <div className="NowPlaying-Container">
+          {" "}
+          <h2>Now playing Movies</h2>
+          {nowPlayingData && <NowPlayingList films={nowPlayingData.results} />}
+        </div>
+        <div className="TopRated-Container">
+          {" "}
+          <h2>Top rated Movies</h2>
+          {topRatedData && <TopRatedFilmList films={topRatedData.results} />}
+        </div>
       </div>
-      <div className="TopRated-Container">
-        {" "}
-        <h2>Top rated Movies</h2>
-        {topRatedData && <TopRatedFilmList films={topRatedData.results} />}
-      </div>
-    </div>
+    </>
   );
 };
 

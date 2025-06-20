@@ -15,6 +15,7 @@ const FilmDetailPage = () => {
 
   return (
     <>
+      <title>{data?.original_title || data?.title || data?.name}</title>
       {data && (
         <div className="Film-Container">
           <FilmDetailCard key={data.id} film={data} />

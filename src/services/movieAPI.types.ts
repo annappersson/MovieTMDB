@@ -47,16 +47,6 @@ export interface TopRatedFilmResponse {
 export interface CreditsResponse {
   id: number;
   cast: ActorDetails[];
-  crew: CrewMember[];
-}
-
-//the crew on the movie (duh)
-export interface CrewMember {
-  id: number;
-  name: string;
-  job: string;
-  department: string;
-  profile_path: string; //this is Img path
 }
 
 export interface ActorDetails {

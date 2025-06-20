@@ -14,21 +14,23 @@ const FilmsByGenre = () => {
     error,
     isError,
   } = useFilmByGenres(Number(genreId), page);
-  const { data } = useGenres();
+  const { data, isLoading } = useGenres();
 
-  if (!data) {
-    return;
+  if (!data && !isLoading) {
+    return <Alert variant="warning">No data found 😢</Alert>;
   }
 
   const handlePageChange = (newPage: number) => {
     setSearchParams({ page: newPage.toString() });
   };
 
-  const genre = data.genres?.find((g) => g.id.toString() === genreId);
-  const genreName = genre ? genre.name : "Unknown Genre";
+  const genreName =
+    data?.genres?.find((g) => g.id.toString() === genreId)?.name ??
+    "Unknown Genre";
 
   return (
     <>
+      <title>{genreName}</title>
       {isError && <Alert>{error.message}</Alert>}
 
       {films && films?.results.length > 0 && (
