@@ -13,7 +13,6 @@ const PopularActorPage = () => {
     setSearchParams({ page: newPage.toString() });
   };
 
-  console.log("PopularActorPage render, page:", page);
   return (
     <>
       <title>Popular Actors</title>
